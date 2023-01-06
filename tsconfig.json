@@ -1,0 +1,18 @@
+{
+    "ts-node": {
+        "compilerOptions": {
+            "module": "commonjs",
+        }
+    },
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "target": "es2017",
+        "jsx": "react",
+        "allowJs": true,
+        "module": "es2022",
+        "moduleResolution": "node"
+    },
+    "exclude": ["node_modules"]
+}
