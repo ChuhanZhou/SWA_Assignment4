@@ -57,7 +57,7 @@ const chalk = require("chalk");
         return api_result
     }
     
-    async getAllGameInfo(id: number, token: string){
+    async getAllGameInfo(id: number, token: string = this.token){
         let api_result = await getAllGameApi(id,token)
         let game_array = new Array<Game>
         if(api_result.ok){
@@ -75,7 +75,7 @@ const chalk = require("chalk");
         }
     }
 
-    async getGameInfoFromID(game_id: number, token: string){
+    async getGameInfoFromID(game_id: number, token: string = this.token){
         let api_result = await getGameApi(game_id,token)
         if(api_result.ok){
             this.game = api_result.game
@@ -85,7 +85,7 @@ const chalk = require("chalk");
         return api_result
     }
 
-    async postGameData_sys(rule: Rules, user_id: number, token: string){
+    async postGameData_sys(rule: Rules, user_id: number, token: string = this.token){
         let api_result = await postGameData(rule,user_id,token)
         if(api_result.ok){
             console.log(chalk.green("Game Created",api_result.info))

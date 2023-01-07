@@ -6,7 +6,6 @@ let game_array = new Array<Game>
 
 let type_list = ["A", "B", "C"]
 let size = [6, 6]
-// let game = new Rules(5, type_list, size)
 
 
 
@@ -14,9 +13,8 @@ let size = [6, 6]
 
 system_model.login("B", "111").then(async () => {
     let user = system_model.getUserInfo()
-    let token = system_model.getToken()
-    system_model.getAllGameInfo(user.id, token)
-    system_model.getGameInfoFromID(4, token)
+    system_model.getAllGameInfo(user.id)
+    system_model.getGameInfoFromID(4)
 
     system_model.initGame(5, type_list, size)
     let game = system_model.getBoard()
@@ -27,6 +25,6 @@ system_model.login("B", "111").then(async () => {
     game.pause()
     game.play(new Position(2, 2), new Position(3, 2))
     
-    system_model.postGameData_sys(game,user.id,token)
+    system_model.postGameData_sys(game,user.id)
 
 })
