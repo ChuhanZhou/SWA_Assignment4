@@ -24,6 +24,7 @@ system_model.login("B", "111").then(async () => {
     game.play(new Position(0, 1), new Position(1, 1))
     game.play(new Position(1, 1), new Position(1, 2))
     game.play(new Position(2, 4), new Position(2, 5))
+    game.pause()
     game.play(new Position(2, 2), new Position(3, 2))
     
     system_model.postGameData_sys(game,user.id,token)

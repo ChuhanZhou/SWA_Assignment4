@@ -116,25 +116,20 @@ export async function postGameData(rule: Rules, user_id: number, token: string){
             console.log(chalk.green("Info: ", info))
             return {
                 ok:true,
-                token: token,
                 info:info
             }
         }else{
             console.log(chalk.bgRed(response_s.status, " Wrong id/token"))
             return {
                 ok:false,
-                info: "wrong username or password",
+                info: response.status,
             }
         }
         //END
-
-        return {
-            ok:true,
-        }
     }else{
         return {
             ok:false,
-            info: "wrong username or password",
+            info: response.status,
         }
     }
 }

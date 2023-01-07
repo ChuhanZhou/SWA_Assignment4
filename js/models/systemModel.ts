@@ -88,7 +88,7 @@ const chalk = require("chalk");
     async postGameData_sys(rule: Rules, user_id: number, token: string){
         let api_result = await postGameData(rule,user_id,token)
         if(api_result.ok){
-            console.log(chalk.green("Game Created"))
+            console.log(chalk.green("Game Created",api_result.info))
         }
         else console.log(chalk.red("Single Game: Error",api_result.info))
         return api_result
