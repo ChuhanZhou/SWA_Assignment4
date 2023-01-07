@@ -49,4 +49,8 @@ export class Game {
   setCompleted(value: boolean) {
     this.completed = value;
   }
+
+  toString(){
+    console.log(chalk.green("LOG:  Game | ID:",this.id,"User ID:",this.user_id,"Score:",this.score,"Completed:",this.completed))
+  }
 }

@@ -14,5 +14,4 @@
         "module": "es2022",
         "moduleResolution": "node"
     },
-    "exclude": ["node_modules"]
 }

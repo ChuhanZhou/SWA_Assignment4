@@ -1,6 +1,7 @@
 import { User } from '../models/domain/user';
-
 var host = 'http://localhost:9090/'
+import fetch from 'node-fetch' 
+// npm install node-fetch@2
 
 export async function registerApi(username:string,password:string) {
     let url = host + 'users';

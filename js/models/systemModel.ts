@@ -1,10 +1,15 @@
 import { registerApi,loginApi,logoutApi,getUserInfoApi,updateUserInfoApi } from '../server/userApiConnecter';
 import { User } from '../models/domain/user';
+import { getAllGameApi, getGameApi, postGameData } from '../server/gameApiConnecter';
+import { Game } from './domain/game';
+import { Rules } from './domain/rules';
+const chalk = require("chalk");
 
  class SystemModel{
     private user:User
     private token:string
-
+    private game: Game
+    private board:Rules
     constructor(){
         this.user = new User("","");
         this.token = "";
@@ -51,13 +56,63 @@ import { User } from '../models/domain/user';
         }
         return api_result
     }
- 
+    
+    async getAllGameInfo(id: number, token: string){
+        let api_result = await getAllGameApi(id,token)
+        let game_array = new Array<Game>
+        if(api_result.ok){
+            api_result.info_array.forEach(response => {
+                let s_game = new Game(response.user,response.score)
+                s_game.setId(response.id)
+                s_game.setCompleted(response.completed)
+                game_array.push(s_game)
+            });
+            return game_array
+        }
+        else {
+        console.log(chalk.red("All Game: Error",api_result.info))
+        return game_array
+        }
+    }
+
+    async getGameInfoFromID(game_id: number, token: string){
+        let api_result = await getGameApi(game_id,token)
+        if(api_result.ok){
+            this.game = api_result.game
+            this.game.toString()
+        }
+        else console.log(chalk.red("Single Game: Error",api_result.info))
+        return api_result
+    }
+
+    async postGameData_sys(rule: Rules, user_id: number, token: string){
+        let api_result = await postGameData(rule,user_id,token)
+        if(api_result.ok){
+            console.log(chalk.green("Game Created"))
+        }
+        else console.log(chalk.red("Single Game: Error",api_result.info))
+        return api_result
+    }
+
+    initGame(out_steps: number, type_list: Array<string>, size: Array<number>) {
+        this.board = new Rules(out_steps, type_list, size)
+        this.board.initBoard()
+    }
+
+    getBoard(): Rules {
+        return this.board;
+    }
+
     getUserInfo(){
         return this.user.copy()
     }
 
     getToken(){
         return this.token
+    }
+
+    getGame(){
+        return this.game
     }
  }
 
