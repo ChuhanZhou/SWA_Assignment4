@@ -1,5 +1,5 @@
 import { Board, Position, BoardListener } from './board';
-const chalk = require("chalk");
+//const chalk = require("chalk");
 
 export class Rules {
     id:string=""
@@ -76,8 +76,8 @@ export class Rules {
         let output2 = '';
         for (let i = 0; i < str1.length; i++) {
             if (str1[i] !== str2[i]) {
-                output1 += chalk.bgRed(str1[i]);
-                output2 += chalk.bgRed(str2[i]);
+                output1 += str1[i];
+                output2 += str2[i];
             } else {
                 output1 += str1[i];
                 output2 += str2[i];
@@ -96,10 +96,10 @@ export class Rules {
 
     play(f_position: Position, s_position: Position) {
         if (!this.init_status) {
-            console.log(chalk.bgRed("This board is not initated yet!"))
+            console.log("This board is not initated yet!")
         }
         else if (this.is_paused) {
-            console.log(chalk.bgRed("This Game is paused!"))
+            console.log("This Game is paused!")
         }
         else {
             this.out_steps -= 1
@@ -110,12 +110,12 @@ export class Rules {
             this.differ(str_g_f, str_g_m)
             str_g_f = str_g_m
             this.points += single_point;
-            console.log(chalk.blue("Current points", this.points, "| Steps Remaining", this.out_steps))
+            console.log("Current points", this.points, "| Steps Remaining", this.out_steps)
             this.x += 1
             if (this.out_steps <= 0) {
                 this.is_ended = true
-                console.log(chalk.red("Game Over"))
-                console.log(chalk.blue("You get", this.points, "Points in", this.x, "steps."))
+                console.log("Game Over")
+                console.log("You get", this.points, "Points in", this.x, "steps.")
                 return this.points
             }
         }
@@ -123,10 +123,10 @@ export class Rules {
 
     pause() {
         if (!this.init_status) {
-            console.log(chalk.bgRed("This board is not initated yet!"))
+            console.log("This board is not initated yet!")
         }
-        console.log(chalk.red("Game Over"))
-        console.log(chalk.blue("You get", this.points, "Points in", this.x, "steps."))
+        console.log("Game Over")
+        console.log("You get", this.points, "Points in", this.x, "steps.")
         this.is_ended = false
         this.is_paused = true
         return this.points

@@ -1,17 +1,22 @@
 {
     "ts-node": {
         "compilerOptions": {
-            "module": "commonjs",
+            "module": "commonjs"
         }
     },
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
         "noImplicitAny": false,
-        "target": "es2017",
+        "target": "es5",
         "jsx": "react",
         "allowJs": true,
-        "module": "es2022",
+        "module": "esnext",
         "moduleResolution": "node"
     },
+    "exclude": [
+        "node_modules",
+         "src/**/*.js",
+         "src/**/*.jsx",
+      ]
 }

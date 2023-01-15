@@ -1,15 +1,15 @@
 import { v4 as uuidv4 } from 'uuid';
-const chalk = require("chalk");
+//const chalk = require("chalk");
 
 export class Game {
 
   private id: string;
-  private user: number;
+  private user_id: number;
   private score: number;
   private completed: boolean = false;
 
   constructor(user_id: number, score: number) {
-    this.user = user_id;
+    this.user_id = user_id;
     this.score = score;
   }
 
@@ -23,15 +23,15 @@ export class Game {
 
   generate_id() {
     this.id = uuidv4()
-    console.log(chalk.green("[Game_obj] created UUID for game: ", this.id))
+    console.log("[Game_obj] created UUID for game: ", this.id)
   }
 
-  get user_id(): number {
-    return this.user;
+  getUser_id(): number {
+    return this.user_id
   }
 
-  set user_id(value: number) {
-    this.user = value;
+  setUser_id(value: number) {
+    this.user_id = value;
   }
 
   getScore(): number {
@@ -48,9 +48,5 @@ export class Game {
 
   setCompleted(value: boolean) {
     this.completed = value;
-  }
-
-  toString(){
-    console.log(chalk.green("LOG:  Game | ID:",this.id,"User ID:",this.user_id,"Score:",this.score,"Completed:",this.completed))
   }
 }

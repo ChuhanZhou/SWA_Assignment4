@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+//const chalk = require("chalk");
 
 export class Board<T>{
     piece_list: Array<Array<Piece<T>>>
@@ -106,7 +106,7 @@ export class Board<T>{
     }
 
     moveInRule(first: Position, second: Position){
-        console.log(chalk.green("<Board> Moving:",first,second))
+        //console.log(chalk.green("<Board> Moving:",first,second))
         let remove_num = 0
         if (this.canMove(first, second)) {
             this.move(first,second)
@@ -251,7 +251,7 @@ export class Board<T>{
                         this.remove(po)
                     })
                     removed = true
-                    console.log(chalk.cyan("Element removed in chart, position: ", position_array,"Element Value: ",removed_type))
+                    //console.log(chalk.cyan("Element removed in chart, position: ", position_array,"Element Value: ",removed_type))
                     position_array = []
                     x += 1
                     start_point = new Position(x, col)
@@ -271,7 +271,7 @@ export class Board<T>{
                         this.remove(po)
                     })
                     removed = true
-                    console.log(chalk.cyan("Element removed in chart, position: ", position_array,"Element Value: ",removed_type))
+                    //console.log(chalk.cyan("Element removed in chart, position: ", position_array,"Element Value: ",removed_type))
                     position_array = []
                     x += 1
                     start_point = new Position(x, col)
@@ -309,7 +309,7 @@ export class Board<T>{
                         this.remove(po)
                     })
                     removed = true
-                    console.log(chalk.cyan("Element removed in chart, position: ", position_array_h,"Element Value: ",removed_type))
+                    //console.log(chalk.cyan("Element removed in chart, position: ", position_array_h,"Element Value: ",removed_type))
                     position_array_h = []
                     x += 1
                     start_point_h = new Position(row, x)
@@ -332,7 +332,7 @@ export class Board<T>{
                     removed = true
                     x += 1
                     start_point_h = new Position(row, x)
-                    console.log(chalk.cyan("Element removed in chart, position: ", position_array_h,"Element Value: ",removed_type))
+                    //console.log(chalk.cyan("Element removed in chart, position: ", position_array_h,"Element Value: ",removed_type))
                 }
                 //console.log(chalk.red("Cleaning array :", " pushed new content:", this.getPiece(check_point_h)?.getType(), "Not Match with ", this.getPiece(start_point_h)?.getType()))
                 position_array_h = []

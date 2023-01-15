@@ -1,12 +1,11 @@
 import fetch from 'node-fetch' 
-const chalk = require("chalk");
 var host = 'http://localhost:9090/'
 import { Game } from'../models/domain/game';
 import { Rules } from '../models/domain/rules';
 
 export async function getAllGameApi(id: number, token: string){
     let url = host + 'games' + "?token=" + token;
-    console.log(chalk.blue("Requesting: ", url));
+    console.log("Requesting: ", url);
 
     let response = await fetch(url,{
         method:"GET",
@@ -22,7 +21,7 @@ export async function getAllGameApi(id: number, token: string){
         // game.setId(info.id)
         // game.setCompleted(info.completed)
         const length = info_size.length;
-        console.log(chalk.green("Size: ",length," | API_response:", info,))
+        console.log("Size: ",length," | API_response:", info)
         return {
             ok:true,
             info:info,
@@ -38,7 +37,7 @@ export async function getAllGameApi(id: number, token: string){
 
 export async function getGameApi(game_id: number, token: string){
     let url = host + 'games/' + game_id + "?token=" + token;
-    console.log(chalk.blue("Requesting: ", url));
+    console.log("Requesting: ", url);
 
     let response = await fetch(url,{
         method:"GET",
@@ -54,7 +53,7 @@ export async function getGameApi(game_id: number, token: string){
         game.setId(info.id)
         game.setCompleted(info.completed)
         //const length = info_size.length;
-        console.log(chalk.green("API_response: gameid: ",game_id," | ", info_r))
+        console.log("API_response: gameid: ",game_id," | ", info_r)
         return {
             ok:true,
             game:game,
@@ -76,7 +75,7 @@ export async function postGameData(rule: Rules, user_id: number, token: string){
     let is_ended = rule.getEndingStatus()
 
     if (is_paused) {
-        console.log(chalk.red("This game is Paused, ES: ", is_ended, " PS: ", is_paused, "Score: ", _game.getScore()))
+        console.log("This game is Paused, ES: ", is_ended, " PS: ", is_paused, "Score: ", _game.getScore())
         _game.setScore(0)
         _game.setCompleted(false)
     }
@@ -98,9 +97,9 @@ export async function postGameData(rule: Rules, user_id: number, token: string){
         let info = JSON.parse(await response.text());
         const data = info;
         game_id = data.id;
-        console.log(chalk.green("Generation Compelete: ", " Game ID: ", game_id))
+        console.log("Generation Compelete: ", " Game ID: ", game_id)
         let url = host + 'games/' + game_id + "?token=" + token;
-        console.log(chalk.blue("Posting: ", url, "\nPayload: ", payload));
+        console.log("Posting: ", url, "\nPayload: ", payload);
 
 
         //ST
@@ -113,13 +112,13 @@ export async function postGameData(rule: Rules, user_id: number, token: string){
         })
         if (response_s.status==200){
             let info = await response_s.text();
-            console.log(chalk.green("Info: ", info))
+            console.log("Info: ", info)
             return {
                 ok:true,
                 info:info
             }
         }else{
-            console.log(chalk.bgRed(response_s.status, " Wrong id/token"))
+            console.log(response_s.status, " Wrong id/token")
             return {
                 ok:false,
                 info: response.status,

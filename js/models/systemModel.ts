@@ -3,7 +3,6 @@ import { User } from '../models/domain/user';
 import { getAllGameApi, getGameApi, postGameData } from '../server/gameApiConnecter';
 import { Game } from './domain/game';
 import { Rules } from './domain/rules';
-const chalk = require("chalk");
 
  class SystemModel{
     private user:User
@@ -72,7 +71,6 @@ const chalk = require("chalk");
             return game_array
         }
         else {
-        console.log(chalk.red("All Game: Error",api_result.info))
         return game_array
         }
     }
@@ -84,16 +82,11 @@ const chalk = require("chalk");
             this.game.toString()
             return this.game
         }
-        else console.log(chalk.red("Single Game: Error",api_result.info))
         return api_result
     }
 
     async postGameData_sys(rule: Rules, user_id: number, token: string = this.token){
         let api_result = await postGameData(rule,user_id,token)
-        if(api_result.ok){
-            console.log(chalk.green("Game Created",api_result.info))
-        }
-        else console.log(chalk.red("Single Game: Error",api_result.info))
         return api_result
     }
 
