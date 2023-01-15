@@ -57,7 +57,7 @@ const chalk = require("chalk");
         return api_result
     }
     
-    async getAllGameInfo(id: number, token: string = this.token){
+    async getAllGameInfo(id?: number, token: string = this.token){
         let api_result = await getAllGameApi(id,token)
         let game_array = new Array<Game>
         if(api_result.ok){
@@ -67,6 +67,8 @@ const chalk = require("chalk");
                 s_game.setCompleted(response.completed)
                 game_array.push(s_game)
             });
+            game_array.sort((a, b) => b.getScore() - a.getScore())
+            game_array = game_array.slice(0, 10)
             return game_array
         }
         else {
@@ -80,6 +82,7 @@ const chalk = require("chalk");
         if(api_result.ok){
             this.game = api_result.game
             this.game.toString()
+            return this.game
         }
         else console.log(chalk.red("Single Game: Error",api_result.info))
         return api_result

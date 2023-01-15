@@ -24,7 +24,12 @@ system_model.login("B", "111").then(async () => {
     game.play(new Position(2, 4), new Position(2, 5))
     game.pause()
     game.play(new Position(2, 2), new Position(3, 2))
+
+    let all_game = system_model.getAllGameInfo()
+    console.log((await all_game))
     
-    system_model.postGameData_sys(game,user.id)
+    let single_game = system_model.getGameInfoFromID(6)
+    console.log((await single_game))
+    //system_model.postGameData_sys(game,user.id)
 
 })
