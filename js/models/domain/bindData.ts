@@ -1,4 +1,3 @@
-import { BoardEventType } from '../../../../../assignment2/final/functional/src/board';
 export class BindData<T>{
     private value:T
     private bind_value:any
