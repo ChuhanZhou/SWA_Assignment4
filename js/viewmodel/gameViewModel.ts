@@ -9,7 +9,7 @@ export class GameViewModel{;
     rank = new BindData([])
 
     initGame(){
-        let type_list = ["A", "B", "C"]
+        let type_list = ["A", "B", "C" ,"D","E"]
         let size = [5, 5]
         system_model.initGame(10, type_list, size)
     }
