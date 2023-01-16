@@ -4,11 +4,11 @@ export class Score{
     score:number
     create_time:number
 
-    constructor(user_name:string,user_id:number,score:number){
+    constructor(user_name:string,user_id:number,score:number,create_time:number = Date.now()){
         this.user_name = user_name
         this.user_id = user_id
         this.score = score
-        this.create_time = Date.now()
+        this.create_time = create_time
     }
 
     getCreateTime():Date{
@@ -16,8 +16,7 @@ export class Score{
     }
 
     copy():Score{
-        let copy = new Score(this.user_name,this.user_id,this.score)
-        copy.create_time = this.create_time
+        let copy = new Score(this.user_name,this.user_id,this.score,this.create_time)
         return copy
     }
 }

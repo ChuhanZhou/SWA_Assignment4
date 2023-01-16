@@ -8,13 +8,17 @@ export class User{
     profile: string
     high_scores: Array<Score>
 
-    constructor(username: string,password: string,id: number = -1,admin: boolean = false,profile = "",high_scores: Score[] = []) {
+    constructor(username: string,password: string,id: number = -1,admin: boolean = false,profile = "",high_scores: Array<Score> = []) {
         this.username = username
         this.password = password
         this.id = id
         this.admin = admin
         this.profile = profile
         this.high_scores = high_scores
+        for (var i = 0; i < this.high_scores.length; i++) {
+            let score = this.high_scores[i]
+            this.high_scores[i]=new Score(score.user_name,score.user_id,score.score,score.create_time)
+        }
     }
 
     getUsername():string{
