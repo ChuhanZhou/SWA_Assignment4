@@ -1,6 +1,7 @@
 import * as React from 'react'
 import login_viewmodel from '../viewmodel/loginViewModel'
 import * as ReactDOM from 'react-dom'
+import Home from "./home";
 
 var username = undefined;
 var password = undefined;
@@ -10,6 +11,7 @@ class UserLoginAndRegister extends React.Component{
   constructor(props:any){
     super(props)
   }
+
   componentDidMount(){
     username = document.getElementById('username') as HTMLInputElement;
     password = document.getElementById('password') as HTMLInputElement;
@@ -18,6 +20,7 @@ class UserLoginAndRegister extends React.Component{
     login_viewmodel.password.bind(password,"value")
     login_viewmodel.error.bind(error,"textContent")
   }
+
   render() {
     return (
     <form className='loginForm'>
@@ -30,15 +33,15 @@ class UserLoginAndRegister extends React.Component{
   )}  
 }
 
-function loginUser(){
-  if(login_viewmodel.login()){
-    //ReactDOM.render(<Home/>, document.getElementById('root'));
+async function loginUser(){
+  if(await login_viewmodel.login()){
+    ReactDOM.render(<Home/>, document.getElementById('root'));
   }
 }
 
-function registerUser(){
-  if(login_viewmodel.register()){
-    //ReactDOM.render(<Home/>, document.getElementById('root'));
+async function registerUser(){
+  if(await login_viewmodel.register()){
+    ReactDOM.render(<Home/>, document.getElementById('root'));
   }
 }
 

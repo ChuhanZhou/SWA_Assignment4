@@ -1,5 +1,4 @@
 import system_model from '../models/systemModel';
-import { EventEmitter } from "events";
 import {BindData} from "../models/domain/bindData"
 
 export class LoginViewModel{
@@ -13,6 +12,8 @@ export class LoginViewModel{
         let result = await system_model.register(this.username.getValue(),this.password.getValue())
         if (!result.ok){
             this.error.changeValue(result.info)
+        }else{
+            this.password.changeValue("")
         }
         return result.ok
     }
@@ -21,6 +22,8 @@ export class LoginViewModel{
         let result = await system_model.login(this.username.getValue(),this.password.getValue())
         if (!result.ok){
             this.error.changeValue(result.info)
+        }else{
+            this.password.changeValue("")
         }
         return result.ok
     }

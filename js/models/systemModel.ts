@@ -99,11 +99,11 @@ import { Rules } from './domain/rules';
         return this.board;
     }
 
-    getUserInfo(){
+    getUserInfo():User{
         return this.user.copy()
     }
 
-    getToken(){
+    getToken():string{
         return this.token
     }
 
