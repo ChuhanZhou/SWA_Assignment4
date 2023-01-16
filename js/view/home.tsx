@@ -6,7 +6,7 @@ import {Link,useLocation} from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { Score } from '../models/domain/score';
 import View from "./login";
-//import Gameboard from "./game";
+import Gameboard from "./game";
 import * as ReactDOM from 'react-dom'
 import home_viewmodel from '../viewmodel/homeViewModel'
 
@@ -45,8 +45,7 @@ export class ShowHome extends React.Component<{},{username:string,password:strin
   }
 
   startGame(){
-    //ReactDOM.render(<Gameboard/>, document.getElementById('root'));
-    //clearTimeout(timer)
+    ReactDOM.render(<Gameboard/>, document.getElementById('root'));
   }
 
   toChangePro(){
